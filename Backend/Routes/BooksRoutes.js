@@ -8,7 +8,7 @@ const router = express.Router()
 //   return response.status(234).send("Welcome to my application");
 // });
 
-router.post("/", async (request, response) => {
+router.post("/create", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -50,7 +50,7 @@ router.get("/", async (request, response) => {
   }
 });
 
-router.get("/:id", async (request, response) => {
+router.get("/show/:id", async (request, response) => {
   try {
     const { id } = request.params;
 

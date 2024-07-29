@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Spinner from "../Components/Spinner";
+import Spinner from "../../Components/Spinner";
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 import { BsInfoCircle } from "react-icons/bs";
 import axios from "axios";
+
 
 function Home() {
   const [books, setBooks] = useState([]);
@@ -68,19 +69,19 @@ function Home() {
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
                     <div className="flex justify-center gap-x-4">
-                      <Link to={`/books/details/${book._id}`}>
-                        <BsInfoCircle className="text-2xl text-yellow-600" />
+                      <Link to={`/books/show/${book._id}`}>
+                        <BsInfoCircle className="text-2xl text-green-600" />
                       </Link>
                       <Link to={`/books/edit/${book._id}`}>
                         <AiOutlineEdit className="text-2xl text-yellow-600" />
                       </Link>
                       <Link to={`/books/delete/${book._id}`}>
-                        <MdOutlineDelete className="text-2xl text-yellow-600" />
+                        <MdOutlineDelete className="text-2xl text-red-600" />
                       </Link>
                     </div>
                   </td>
                 </tr>
-               );
+              );
             })}
           </tbody>
         </table>
@@ -90,3 +91,15 @@ function Home() {
 }
 
 export default Home;
+
+// import React from 'react'
+
+// const Home = () => {
+//   return (
+//     <div className='w-10 bg-slate-950 text-purple-600'>
+//       hello
+//     </div>
+//   )
+// }
+
+// export default Home
