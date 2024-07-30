@@ -4,6 +4,7 @@ import BackButton from "../Components/BackButton";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router";
 import Spinner from "../Components/Spinner";
+import {useSnackbar} from 'notistack'
 
 const EditBook = () => {
   const [title, settitle] = useState("");
@@ -12,6 +13,7 @@ const EditBook = () => {
   const [loading, setloading] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
+  const {enqueueSnackbar} = useSnackbar()
 
   useEffect(() => {
     setloading(true);
@@ -27,7 +29,7 @@ const EditBook = () => {
       .catch((error) => {
         setloading(false)
         console.log(error)
-        alert("An error has occured get api" , error.message)
+        
       });
   }, []);
 
@@ -44,10 +46,11 @@ const EditBook = () => {
       .then(() => {
         setloading(false);
         navigate("/");
+        enqueueSnackbar("Book Edited Successfully" , {variant:'success'})
       })
       .catch((error) => {
         console.log(error.message, "Error hai axios ka");
-        alert("An error occured pput api wala", error.message);
+        enqueueSnackbar( error.message , {variant:'error'})
       });
   };
 
